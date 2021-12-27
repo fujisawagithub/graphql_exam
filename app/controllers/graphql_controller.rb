@@ -11,7 +11,7 @@ class GraphqlController < ApplicationController
     context = {
       blog: Blog.last
     }
-    result = ExamGraphqlSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
+    result = GraphqlAppSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
   rescue StandardError => e
     raise e unless Rails.env.development?
